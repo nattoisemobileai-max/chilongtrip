@@ -6,327 +6,61 @@
     <title>長隆慢活全攻略 🐧 | 樂齡無憂</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        :root {
-            --ocean-blue: #0066FF;
-            --deep-sea: #003399;
-            --coral-orange: #FF7F50;
-            --ice-blue: #E3F2FD;
-            --text-dark: #1A237E;
-            --star-gold: #FFD700;
-            --transport-gray: #546E7A;
-            --color-ocean-kingdom: #0066FF;
-            --color-spaceship: #9B59B6;
-            --color-hotel: #FF9500;
-            --color-transport: #546E7A;
-        }
-
-        body {
-            font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Roboto, "Segoe UI", sans-serif;
-            background-color: #F0F4F8;
-            color: var(--text-dark);
-            margin: 0;
-            padding-bottom: env(safe-area-inset-bottom);
-            line-height: 1.45;
-        }
-
-        .top-nav {
-            display: flex;
-            background: var(--ocean-blue);
-            padding: 12px 16px;
-            overflow-x: auto;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            gap: 10px;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .nav-item {
-            flex: 0 0 auto;
-            padding: 10px 18px;
-            border-radius: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 14px;
-            font-weight: 700;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: inherit;
-        }
-
-        .nav-item.active {
-            background: white;
-            color: var(--ocean-blue);
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--deep-sea) 100%);
-            color: white;
-            padding: 28px 22px 24px 22px;
-            border-bottom-left-radius: 32px;
-            border-bottom-right-radius: 32px;
-        }
-
-        .header-title { 
-            font-size: clamp(24px, 6vw, 32px); 
-            font-weight: 800; 
-        }
-
-        .main-container { 
-            padding: 16px 16px 70px 16px; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            width: 100%;
-        }
-
+        /* 此處樣式與您提供的完全相同，為節省篇幅已省略，但實際使用時保留完整樣式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root { --ocean-blue: #0066FF; --deep-sea: #003399; --coral-orange: #FF7F50; --ice-blue: #E3F2FD; --text-dark: #1A237E; --star-gold: #FFD700; --transport-gray: #546E7A; --color-ocean-kingdom: #0066FF; --color-spaceship: #9B59B6; --color-hotel: #FF9500; --color-transport: #546E7A; }
+        body { font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Roboto, "Segoe UI", sans-serif; background-color: #F0F4F8; color: var(--text-dark); margin: 0; padding-bottom: env(safe-area-inset-bottom); line-height: 1.45; }
+        .top-nav { display: flex; background: var(--ocean-blue); padding: 12px 16px; overflow-x: auto; position: sticky; top: 0; z-index: 1000; gap: 10px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+        .nav-item { flex: 0 0 auto; padding: 10px 18px; border-radius: 40px; background: rgba(255, 255, 255, 0.2); color: white; font-size: 14px; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.35); white-space: nowrap; cursor: pointer; transition: all 0.2s ease; font-family: inherit; }
+        .nav-item.active { background: white; color: var(--ocean-blue); }
+        header { background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--deep-sea) 100%); color: white; padding: 28px 22px 24px 22px; border-bottom-left-radius: 32px; border-bottom-right-radius: 32px; }
+        .header-title { font-size: clamp(24px, 6vw, 32px); font-weight: 800; }
+        .main-container { padding: 16px 16px 70px 16px; max-width: 700px; margin: 0 auto; width: 100%; }
         .view-panel { display: none; animation: fadeSlide 0.25s ease; }
         .view-panel.active { display: block; }
-
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateY(8px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-
-        .day-switcher { 
-            display: flex; 
-            gap: 12px; 
-            padding: 5px 0 20px 0; 
-        }
-
-        .day-btn {
-            flex: 1;
-            background: white;
-            border: none;
-            padding: 14px 0;
-            border-radius: 44px;
-            font-weight: 800;
-            color: var(--ocean-blue);
-            font-size: clamp(14px, 4vw, 18px);
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .day-switcher { display: flex; gap: 12px; padding: 5px 0 20px 0; }
+        .day-btn { flex: 1; background: white; border: none; padding: 14px 0; border-radius: 44px; font-weight: 800; color: var(--ocean-blue); font-size: clamp(14px, 4vw, 18px); cursor: pointer; font-family: inherit; transition: all 0.2s ease; text-align: center; }
         .day-btn.active { background: var(--coral-orange); color: white; }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 24px;
-            padding: clamp(16px, 4vw, 22px);
-            margin-bottom: 18px;
-            box-shadow: 0 6px 14px rgba(0,51,102,0.06);
-            transition: transform 0.1s ease;
-        }
+        .card { background: #FFFFFF; border-radius: 24px; padding: clamp(16px, 4vw, 22px); margin-bottom: 18px; box-shadow: 0 6px 14px rgba(0,51,102,0.06); transition: transform 0.1s ease; }
         .card:active { transform: scale(0.99); }
-
-        .card-img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-top: 14px;
-            display: block;
-        }
-
+        .card-img { width: 100%; height: 140px; object-fit: cover; border-radius: 16px; margin-top: 14px; display: block; }
         .card[data-zone="海洋王國"] { border-left: 6px solid var(--color-ocean-kingdom); }
         .card[data-zone="飛船樂園"] { border-left: 6px solid var(--color-spaceship); }
         .card[data-zone="酒店/餐飲"] { border-left: 6px solid var(--color-hotel); }
         .card[data-zone="交通"] { border-left: 6px solid var(--color-transport); }
-        .card[data-zone="煙花匯演"] { 
-            border-left: 6px solid #FF3B30;
-            background: linear-gradient(145deg, #FFF5F0 0%, #FFFFFF 100%);
-        }
-
-        .time-badge {
-            background: var(--ice-blue);
-            color: var(--ocean-blue);
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-
-        .card-title { 
-            font-size: clamp(1.2rem, 5vw, 1.5rem); 
-            font-weight: 800; 
-            color: var(--deep-sea); 
-            margin-bottom: 8px; 
-        }
-        
-        .card-desc { 
-            font-size: clamp(0.85rem, 3.5vw, 0.95rem); 
-            color: #2C3E50; 
-            line-height: 1.45; 
-            margin-bottom: 12px; 
-        }
-
+        .card[data-zone="煙花匯演"] { border-left: 6px solid #FF3B30; background: linear-gradient(145deg, #FFF5F0 0%, #FFFFFF 100%); }
+        .time-badge { background: var(--ice-blue); color: var(--ocean-blue); padding: 6px 14px; border-radius: 40px; font-size: 0.75rem; font-weight: 800; display: inline-block; margin-bottom: 12px; }
+        .card-title { font-size: clamp(1.2rem, 5vw, 1.5rem); font-weight: 800; color: var(--deep-sea); margin-bottom: 8px; }
+        .card-desc { font-size: clamp(0.85rem, 3.5vw, 0.95rem); color: #2C3E50; line-height: 1.45; margin-bottom: 12px; }
         .info-tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
-        .info-tag {
-            background: #F0F4F8;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
+        .info-tag { background: #F0F4F8; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
         .zone-tag { background: rgba(0,102,255,0.1); color: var(--ocean-blue); }
         .zone-tag.spaceship { background: rgba(155,89,182,0.1); color: #8E44AD; }
         .area-tag { background: #E8F0FE; color: #1E6F3F; }
         .show-ref-tag { background: #FFF3E0; color: #E65100; }
-
         .highlight-text { color: var(--coral-orange); font-weight: 800; }
-        
-        .timeline-step {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 8px 0;
-            border-bottom: 1px dashed #E2E8F0;
-            gap: 8px;
-        }
+        .timeline-step { display: flex; justify-content: space-between; flex-wrap: wrap; padding: 8px 0; border-bottom: 1px dashed #E2E8F0; gap: 8px; }
         .step-name { font-weight: 700; }
         .step-detail { color: #2C3E50; font-size: 0.85rem; }
-
         .show-table { width: 100%; border-collapse: collapse; }
-        .show-table td { 
-            padding: 12px 10px; 
-            background: #F8FAFC; 
-            border-bottom: 2px solid white; 
-            font-size: clamp(0.8rem, 3vw, 0.9rem);
-        }
-
-        .restaurant-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.75rem;
-            margin-bottom: 8px;
-        }
-        .restaurant-table th {
-            background: var(--ocean-blue);
-            color: white;
-            padding: 10px 4px;
-            font-weight: 700;
-            text-align: center;
-        }
-        .restaurant-table td {
-            padding: 8px 4px;
-            background: #F8FAFC;
-            border-bottom: 1px solid #E2E8F0;
-            text-align: center;
-        }
+        .show-table td { padding: 12px 10px; background: #F8FAFC; border-bottom: 2px solid white; font-size: clamp(0.8rem, 3vw, 0.9rem); }
+        .restaurant-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-bottom: 8px; }
+        .restaurant-table th { background: var(--ocean-blue); color: white; padding: 10px 4px; font-weight: 700; text-align: center; }
+        .restaurant-table td { padding: 8px 4px; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; text-align: center; }
         .restaurant-table tr:last-child td { border-bottom: none; }
-        .restaurant-section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--deep-sea);
-            margin: 20px 0 12px 0;
-            padding-left: 8px;
-            border-left: 4px solid var(--coral-orange);
-        }
-        .restaurant-note {
-            font-size: 0.7rem;
-            color: #8E8E93;
-            margin-top: 12px;
-            text-align: center;
-        }
-
-        .emergency-mini {
-            background: #FFEFE8;
-            border-radius: 24px;
-            padding: 16px;
-            margin-top: 20px;
-        }
-        
-        .footer-safe { 
-            text-align: center; 
-            font-size: clamp(10px, 3vw, 12px); 
-            color: #8E8E93; 
-            margin-top: 28px; 
-        }
-
-        .map-card {
-            background: #FFFFFF;
-            border-radius: 24px;
-            padding: 20px;
-            margin-bottom: 18px;
-            text-align: center;
-        }
-        .map-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--deep-sea);
-            margin-bottom: 12px;
-        }
-        .map-placeholder {
-            background: #E9ECF3;
-            border-radius: 20px;
-            padding: 40px 20px;
-            margin: 15px 0;
-            text-align: center;
-            color: #5E6E8A;
-        }
-        .map-link {
-            display: inline-block;
-            background: var(--ocean-blue);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 12px;
-            font-size: 0.9rem;
-        }
-
-        .fab {
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px;
-            background: var(--coral-orange); 
-            color: white;
-            width: clamp(56px, 15vw, 64px); 
-            height: clamp(56px, 15vw, 64px);
-            border-radius: 50%;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            flex-direction: column;
-            box-shadow: 0 8px 22px rgba(255, 127, 80, 0.5);
-            text-decoration: none;
-            z-index: 2000;
-            border: 3px solid white;
-            font-size: 12px;
-        }
+        .restaurant-section-title { font-size: 1.1rem; font-weight: 800; color: var(--deep-sea); margin: 20px 0 12px 0; padding-left: 8px; border-left: 4px solid var(--coral-orange); }
+        .restaurant-note { font-size: 0.7rem; color: #8E8E93; margin-top: 12px; text-align: center; }
+        .emergency-mini { background: #FFEFE8; border-radius: 24px; padding: 16px; margin-top: 20px; }
+        .footer-safe { text-align: center; font-size: clamp(10px, 3vw, 12px); color: #8E8E93; margin-top: 28px; }
+        .map-card { background: #FFFFFF; border-radius: 24px; padding: 20px; margin-bottom: 18px; text-align: center; }
+        .map-title { font-size: 1.3rem; font-weight: 800; color: var(--deep-sea); margin-bottom: 12px; }
+        .map-placeholder { background: #E9ECF3; border-radius: 20px; padding: 40px 20px; margin: 15px 0; text-align: center; color: #5E6E8A; }
+        .map-link { display: inline-block; background: var(--ocean-blue); color: white; padding: 12px 24px; border-radius: 40px; text-decoration: none; font-weight: 700; margin-top: 12px; font-size: 0.9rem; }
+        .fab { position: fixed; bottom: 20px; right: 20px; background: var(--coral-orange); color: white; width: clamp(56px, 15vw, 64px); height: clamp(56px, 15vw, 64px); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 8px 22px rgba(255, 127, 80, 0.5); text-decoration: none; z-index: 2000; border: 3px solid white; font-size: 12px; }
         .fab i { font-size: clamp(18px, 5vw, 22px); margin-bottom: 2px; }
-
-        .intro-text {
-            background: #F8FAFC;
-            padding: 12px 16px;
-            border-radius: 16px;
-            margin: 12px 0 8px 0;
-            font-size: clamp(0.8rem, 3.5vw, 0.9rem);
-            border-left: 3px solid var(--coral-orange);
-        }
-
-        @media (min-width: 768px) {
-            .main-container { padding: 20px 24px 80px 24px; }
-            .card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,51,102,0.1); }
-            .top-nav { justify-content: center; }
-            .nav-item { min-width: 100px; text-align: center; }
-            .card-img { height: 160px; }
-            .restaurant-table { font-size: 0.85rem; }
-            .restaurant-table th, .restaurant-table td { padding: 12px 8px; }
-        }
+        .intro-text { background: #F8FAFC; padding: 12px 16px; border-radius: 16px; margin: 12px 0 8px 0; font-size: clamp(0.8rem, 3.5vw, 0.9rem); border-left: 3px solid var(--coral-orange); }
+        @media (min-width: 768px) { .main-container { padding: 20px 24px 80px 24px; } .card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,51,102,0.1); } .top-nav { justify-content: center; } .nav-item { min-width: 100px; text-align: center; } .card-img { height: 160px; } .restaurant-table { font-size: 0.85rem; } .restaurant-table th, .restaurant-table td { padding: 12px 8px; } }
     </style>
 </head>
 <body>
@@ -363,7 +97,7 @@
                 <div class="timeline-step"><span class="step-name">🛃 珠海口岸入境</span><span class="step-detail">⏱ 10-15分鐘</span></div>
                 <div class="timeline-step"><span class="step-name">🚕 的士前往企鵝酒店</span><span class="step-detail">⏱ 25-40分鐘 | 💰 ¥100-130</span></div>
                 <div class="card-desc"><strong>A33 晨早班次：</strong> 09:15 / 09:35 / 09:55</div>
-                
+                <img class="card-img" src="images/view1.jpg" alt="交通示意圖">
             </div>
 
             <div class="card" data-zone="酒店/餐飲">
@@ -429,6 +163,8 @@
                 <div class="card-title">散步回企鵝酒店 🚶</div>
                 <div class="card-desc">從馬戲城步行回企鵝酒店，約 5-10 分鐘。</div>
                 <div class="info-tags"><span class="info-tag area-tag">📍 返回企鵝酒店</span></div>
+                <img class="card-img" src="images/view_walk.jpg" alt="步行回酒店">
+            </div>
 
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">18:45 起</span>
@@ -439,10 +175,10 @@
                 </div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐至 21:30</span><span class="info-tag zone-tag">企鵝酒店</span><span class="info-tag area-tag">📍 企鵝酒店</span></div>
                 <img class="card-img" src="images/view_buffet.jpg" alt="帝企鵝自助晚餐">
-            
+            </div>
         </div>
 
-        <!-- ========= DAY 2 (按照您指定的順序) ========= -->
+        <!-- DAY 2 (按照您指定的順序) -->
         <div id="day-2-content" class="day-content" style="display:none;">
             <!-- 1. 鯨鯊館深度遊 -->
             <div class="card" data-zone="海洋王國">
@@ -483,7 +219,7 @@
                 <div class="card-title">海洋大巡遊 🎭</div>
                 <div class="card-desc">大型花車匯演，薈萃園內各式海洋動物主題花車，演員陣容鼎盛，充份展現「海洋王國」的繽紛活力！建議提前10分鐘到橫琴海旁佔位。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span><span class="info-tag show-ref-tag">🎭 日間巡遊</span></div>
-                <img class="card-img" src="images/view1.jpg" alt="海洋大巡遊">
+                <img class="card-img" src="images/view_parade.jpg" alt="海洋大巡遊">
             </div>
 
             <!-- 5. 企鵝館 & 北極熊館 -->
@@ -504,7 +240,7 @@
                     • <strong>海底船：</strong> 乘坐互動船探索深海奇觀，平穩舒適，適合長輩小朋友。
                 </div>
                 <div class="info-tags"><span class="info-tag">⏱ 建議停留1小時</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 英雄島</span></div>
-                <img class="card-img" src="images/view1.jpg" alt="英雄島與海底船">
+                <img class="card-img" src="images/view_hero.jpg" alt="英雄島與海底船">
             </div>
 
             <!-- 7. 海象山區：海象島 & 海獅港灣 -->
@@ -522,7 +258,7 @@
                 <div class="card-title">晚餐 (夜間表演前)</div>
                 <div class="card-desc">建議於園區內餐廳（如海底餐廳、雨林餐廳）或返回酒店「食街」用晚餐，為夜間表演儲備體力。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐45分鐘</span><span class="info-tag zone-tag">酒店區</span><span class="info-tag area-tag">📍 園區餐廳 / 企鵝酒店</span></div>
-                <img class="card-img" src="images/view1.jpg" alt="晚餐">
+                <img class="card-img" src="images/view_dinner.jpg" alt="晚餐">
             </div>
 
             <!-- 9. 超級猛獁大巡遊 -->
@@ -531,7 +267,7 @@
                 <div class="card-title">超級猛獁大巡遊 🐘✨</div>
                 <div class="card-desc">超級猛獁雖然體型巨大，卻有一顆軟萌的心，遠看高大威猛，其實愛走愛跑還愛擺出各種表情賣萌。遊客還有機會登上超級猛獁共同派對！</div>
                 <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span><span class="info-tag show-ref-tag">🐘 傍晚巡遊</span></div>
-                <img class="card-img" src="images/view_parade.jpg" alt="超級猛獁巡遊">
+                <img class="card-img" src="images/view_mammoth.jpg" alt="超級猛獁巡遊">
             </div>
 
             <!-- 10. 海洋夜光大巡遊 -->
@@ -540,7 +276,7 @@
                 <div class="card-title">海洋夜光大巡遊 🌌✨</div>
                 <div class="card-desc">夜間限定！繽紛發光花車與表演者互動，在神秘的海洋王國裡，卡卡與你相約夜光海洋底下。建議提早佔位。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span><span class="info-tag show-ref-tag">🌌 夜間巡遊</span></div>
-                <img class="card-img" src="images/view1.jpg" alt="夜光花車巡遊">
+                <img class="card-img" src="images/view_nightparade.jpg" alt="夜光花車巡遊">
             </div>
 
             <!-- 11. 海洋幻彩煙花秀 -->
@@ -560,7 +296,7 @@
                 <div class="card-title">🔥 虎鯨劇場 · 海洋霸主秀 🐋 <span class="highlight-text">(必看！)</span></div>
                 <div class="intro-text">🔥 開園後「第一個直奔」虎鯨劇場，搶佔中間前五排座位。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 表演約30分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
-                <img class="card-img" src="images/view1.jpg" alt="虎鯨劇場">
+                <img class="card-img" src="images/view_killerwhale.jpg" alt="虎鯨劇場">
             </div>
 
             <div class="card" data-zone="飛船樂園">
@@ -568,7 +304,7 @@
                 <div class="card-title">宇宙世界 & 珊瑚秘境 🪸</div>
                 <div class="intro-text">🚀 宇宙世界：星際隧道。🪸 珊瑚秘境：全球最大室內珊瑚展示。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 建議停留50分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
-                <img class="card-img" src="images/view1.jpg" alt="宇宙世界與珊瑚秘境">
+                <img class="card-img" src="images/view_universe.jpg" alt="宇宙世界與珊瑚秘境">
             </div>
 
             <div class="card" data-zone="飛船樂園">
@@ -576,7 +312,7 @@
                 <div class="card-title">虎鯨餐廳 🍽️ <span class="highlight-text">(與虎鯨共進午餐)</span></div>
                 <div class="card-desc">建議 11:45 前抵達餐廳佔據第一排位置。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐1小時</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
-                <img class="card-img" src="images/view_whale.jpg" alt="虎鯨餐廳">
+                <img class="card-img" src="images/view_whale_rest.jpg" alt="虎鯨餐廳">
             </div>
 
             <div class="card" data-zone="飛船樂園">
@@ -592,7 +328,7 @@
                 <div class="card-title">星際展廳 🌌 & 自由探索</div>
                 <div class="card-desc">夢幻光影打卡點，補拍照片、逛紀念品商店。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 建議停留1小時</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
-                <img class="card-img" src="images/view_lunch.jpg" alt="星際展廳">
+                <img class="card-img" src="images/view_starhall.jpg" alt="星際展廳">
             </div>
 
             <div class="card" data-zone="交通">
@@ -600,12 +336,12 @@
                 <div class="card-title">回程出發 🚕</div>
                 <div class="card-desc">的士前往橫琴口岸，車程約25-40分鐘，車費約¥100-130</div>
                 <div class="info-tags"><span class="info-tag">⏱ 車程25-40分鐘</span><span class="info-tag zone-tag">交通接駁</span></div>
-               
-         
+                <img class="card-img" src="images/view_taxi.jpg" alt="回程交通">
+            </div>
         </div>
     </div>
 
-    <!-- 遊戲清單、表演時間、餐廳推介、園區地圖分頁保持不變 -->
+    <!-- 遊戲清單、表演時間、餐廳推介、園區地圖分頁保持不變 (因篇幅從略，實際使用時請保留原有完整內容) -->
     <div id="view-rides" class="view-panel">
         <div class="card" data-zone="海洋王國"><div class="card-title">5D 城堡影院</div><div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海洋大街</span></div><img class="card-img" src="images/view1.jpg" alt="5D城堡影院"></div>
         <div class="card" data-zone="飛船樂園"><div class="card-title">深海潛艇</div><div class="info-tags"><span class="info-tag">⏱ 15分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div><img class="card-img" src="images/view1.jpg" alt="深海潛艇"></div>
