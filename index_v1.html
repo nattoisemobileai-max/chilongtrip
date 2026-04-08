@@ -28,7 +28,7 @@
         }
 
         body {
-            font-family: -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+            font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Roboto, "Segoe UI", sans-serif;
             background-color: #F0F4F8;
             color: var(--text-dark);
             margin: 0;
@@ -36,28 +36,33 @@
             line-height: 1.45;
         }
 
+        /* 頂部導航 - 響應式，支援橫向滾動 */
         .top-nav {
             display: flex;
             background: var(--ocean-blue);
-            padding: 12px 12px;
+            padding: 12px 16px;
             overflow-x: auto;
             position: sticky;
             top: 0;
             z-index: 1000;
-            gap: 12px;
+            gap: 10px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
         }
 
         .nav-item {
             flex: 0 0 auto;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 40px;
             background: rgba(255, 255, 255, 0.2);
             color: white;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             border: 1px solid rgba(255, 255, 255, 0.35);
             white-space: nowrap;
             cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
         }
 
         .nav-item.active {
@@ -73,9 +78,18 @@
             border-bottom-right-radius: 32px;
         }
 
-        .header-title { font-size: 28px; font-weight: 800; }
+        .header-title { 
+            font-size: clamp(24px, 6vw, 32px); 
+            font-weight: 800; 
+        }
 
-        .main-container { padding: 16px 16px 70px 16px; max-width: 600px; margin: 0 auto; }
+        .main-container { 
+            padding: 16px 16px 70px 16px; 
+            max-width: 700px; 
+            margin: 0 auto; 
+            width: 100%;
+        }
+
         .view-panel { display: none; animation: fadeSlide 0.25s ease; }
         .view-panel.active { display: block; }
 
@@ -84,7 +98,12 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        .day-switcher { display: flex; gap: 12px; padding: 5px 0 20px 0; }
+        .day-switcher { 
+            display: flex; 
+            gap: 12px; 
+            padding: 5px 0 20px 0; 
+        }
+
         .day-btn {
             flex: 1;
             background: white;
@@ -93,18 +112,24 @@
             border-radius: 44px;
             font-weight: 800;
             color: var(--ocean-blue);
-            font-size: 1rem;
+            font-size: clamp(14px, 4vw, 18px);
             cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            text-align: center;
         }
         .day-btn.active { background: var(--coral-orange); color: white; }
 
         .card {
             background: #FFFFFF;
             border-radius: 24px;
-            padding: 20px;
+            padding: clamp(16px, 4vw, 22px);
             margin-bottom: 18px;
             box-shadow: 0 6px 14px rgba(0,51,102,0.06);
+            transition: transform 0.1s ease;
         }
+        .card:active { transform: scale(0.99); }
+
         .card[data-zone="海洋王國"] { border-left: 6px solid var(--color-ocean-kingdom); }
         .card[data-zone="飛船樂園"] { border-left: 6px solid var(--color-spaceship); }
         .card[data-zone="酒店/餐飲"] { border-left: 6px solid var(--color-hotel); }
@@ -125,8 +150,19 @@
             margin-bottom: 12px;
         }
 
-        .card-title { font-size: 1.35rem; font-weight: 800; color: var(--deep-sea); margin-bottom: 8px; }
-        .card-desc { font-size: 0.95rem; color: #2C3E50; line-height: 1.45; margin-bottom: 12px; }
+        .card-title { 
+            font-size: clamp(1.2rem, 5vw, 1.5rem); 
+            font-weight: 800; 
+            color: var(--deep-sea); 
+            margin-bottom: 8px; 
+        }
+        
+        .card-desc { 
+            font-size: clamp(0.85rem, 3.5vw, 0.95rem); 
+            color: #2C3E50; 
+            line-height: 1.45; 
+            margin-bottom: 12px; 
+        }
 
         .info-tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
         .info-tag {
@@ -140,9 +176,10 @@
         .zone-tag.spaceship { background: rgba(155,89,182,0.1); color: #8E44AD; }
 
         .highlight-text { color: var(--coral-orange); font-weight: 800; }
+        
         .attraction-img {
             width: 100%;
-            height: 140px;
+            height: clamp(120px, 25vw, 160px);
             background-size: cover;
             background-position: center;
             border-radius: 16px;
@@ -152,13 +189,21 @@
         .timeline-step {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
             padding: 8px 0;
             border-bottom: 1px dashed #E2E8F0;
+            gap: 8px;
         }
         .step-name { font-weight: 700; }
+        .step-detail { color: #2C3E50; font-size: 0.85rem; }
 
         .show-table { width: 100%; border-collapse: collapse; }
-        .show-table td { padding: 12px 10px; background: #F8FAFC; border-bottom: 2px solid white; }
+        .show-table td { 
+            padding: 12px 10px; 
+            background: #F8FAFC; 
+            border-bottom: 2px solid white; 
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+        }
 
         .emergency-mini {
             background: #FFEFE8;
@@ -166,28 +211,88 @@
             padding: 16px;
             margin-top: 20px;
         }
-        .footer-safe { text-align: center; font-size: 11px; color: #8E8E93; margin-top: 28px; }
+        
+        .footer-safe { 
+            text-align: center; 
+            font-size: clamp(10px, 3vw, 12px); 
+            color: #8E8E93; 
+            margin-top: 28px; 
+        }
+
+        /* 地圖卡片專用樣式 */
+        .map-card {
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .map-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--deep-sea);
+            margin-bottom: 12px;
+        }
+        .map-placeholder {
+            background: #E9ECF3;
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin: 15px 0;
+            text-align: center;
+            color: #5E6E8A;
+        }
+        .map-link {
+            display: inline-block;
+            background: var(--ocean-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+        .qr-note {
+            font-size: 0.8rem;
+            color: #8E8E93;
+            margin-top: 12px;
+        }
 
         .fab {
-            position: fixed; bottom: 28px; right: 20px;
-            background: var(--coral-orange); color: white;
-            width: 64px; height: 64px; border-radius: 32px;
-            display: flex; align-items: center; justify-content: center;
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px;
+            background: var(--coral-orange); 
+            color: white;
+            width: clamp(56px, 15vw, 64px); 
+            height: clamp(56px, 15vw, 64px);
+            border-radius: 50%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
             flex-direction: column;
             box-shadow: 0 8px 22px rgba(255, 127, 80, 0.5);
             text-decoration: none;
             z-index: 2000;
             border: 3px solid white;
+            font-size: 12px;
         }
-        .fab i { font-size: 22px; margin-bottom: 2px; }
+        .fab i { font-size: clamp(18px, 5vw, 22px); margin-bottom: 2px; }
 
         .intro-text {
             background: #F8FAFC;
             padding: 12px 16px;
             border-radius: 16px;
             margin: 12px 0 8px 0;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 3.5vw, 0.9rem);
             border-left: 3px solid var(--coral-orange);
+        }
+
+        @media (min-width: 768px) {
+            .main-container { padding: 20px 24px 80px 24px; }
+            .card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,51,102,0.1); }
+            .top-nav { justify-content: center; }
+            .nav-item { min-width: 100px; text-align: center; }
         }
     </style>
 </head>
@@ -197,6 +302,7 @@
     <button class="nav-item active" data-main="itinerary">📅 完整行程</button>
     <button class="nav-item" data-main="rides">🎢 遊戲清單</button>
     <button class="nav-item" data-main="shows">🕒 表演時間</button>
+    <button class="nav-item" data-main="maps">🗺️ 園區地圖</button>
 </nav>
 
 <header>
@@ -204,6 +310,7 @@
 </header>
 
 <div class="main-container">
+    <!-- ================= 完整行程分頁 ================= -->
     <div id="view-itinerary" class="view-panel active">
         <div class="day-switcher">
             <button class="day-btn active" data-day="1">🐣 DAY 1 · 抵達</button>
@@ -211,59 +318,52 @@
             <button class="day-btn" data-day="3">🚀 DAY 3 · 飛船樂園</button>
         </div>
 
-        <!-- ================= DAY 1 ================= -->
+        <!-- DAY 1 -->
         <div id="day-1-content" class="day-content">
             <div class="card" data-zone="交通">
                 <span class="time-badge">交通時間表</span>
                 <div class="card-title">屯門碼頭 → 珠海長隆</div>
-                <div class="timeline-step"><span class="step-name">🚌 龍運巴士 A33</span><span>⏱ 15-20分鐘 | 💰 $15</span></div>
-                <div class="timeline-step"><span class="step-name">🛃 旅檢大樓過關</span><span>⏱ 10-20分鐘</span></div>
-                <div class="timeline-step"><span class="step-name">🌉 港珠澳大橋金巴</span><span>⏱ 40分鐘 | 💰 $65</span></div>
-                <div class="timeline-step"><span class="step-name">🛃 珠海口岸入境</span><span>⏱ 10-15分鐘</span></div>
-                <div class="timeline-step"><span class="step-name">🚕 的士前往企鵝酒店</span><span>⏱ 25-40分鐘 | 💰 ¥100-130</span></div>
+                <div class="timeline-step"><span class="step-name">🚌 龍運巴士 A33</span><span class="step-detail">⏱ 15-20分鐘 | 💰 $15</span></div>
+                <div class="timeline-step"><span class="step-name">🛃 旅檢大樓過關</span><span class="step-detail">⏱ 10-20分鐘</span></div>
+                <div class="timeline-step"><span class="step-name">🌉 港珠澳大橋金巴</span><span class="step-detail">⏱ 40分鐘 | 💰 $65</span></div>
+                <div class="timeline-step"><span class="step-name">🛃 珠海口岸入境</span><span class="step-detail">⏱ 10-15分鐘</span></div>
+                <div class="timeline-step"><span class="step-name">🚕 的士前往企鵝酒店</span><span class="step-detail">⏱ 25-40分鐘 | 💰 ¥100-130</span></div>
                 <div class="card-desc"><strong>A33 晨早班次：</strong> 09:15 / 09:35 / 09:55</div>
             </div>
-
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">11:45 - 12:45</span>
                 <div class="card-title">Check-in + 快速午餐</div>
                 <div class="card-desc">11:45 前抵達酒店，寄存行李後於「食街」快速用餐，12:45 出發前往 5D影院。<br><span class="highlight-text">需提前15分鐘排隊入場！</span></div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">13:30 - 14:00</span>
                 <div class="card-title">5D城堡影院 🎬</div>
                 <div class="card-desc">動感座椅+風雨特效，建議 13:15 前排隊。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">14:00 - 14:45</span>
                 <div class="card-title">周邊展館參觀</div>
                 <div class="card-desc">海牛館、鰩魚池、海洋大街拍照。</div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">15:00 - 15:20</span>
                 <div class="card-title">海洋大巡遊 🎭</div>
                 <div class="card-desc">繽紛花車互動，橫琴海主幹道。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">15:30 - 16:00</span>
                 <div class="card-title">海豚劇場 🐬</div>
-                <div class="intro-text">🌊 <strong>海豚劇場</strong> — 坐下來看表演，長者可以休息，小朋友也能近距離看動物！海豚們帶來充滿智慧與靈性的表演。</div>
+                <div class="intro-text">🌊 <strong>海豚劇場</strong> — 坐下來看表演，長者可以休息，小朋友也能近距離看動物！</div>
                 <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">16:15 - 16:40</span>
                 <div class="card-title">海獅劇場 🦭</div>
                 <div class="intro-text">🎭 <strong>海獅劇場</strong> — 幽默搞笑的海獅表演，坐下來欣賞，長輩可以趁機休息。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">16:50 - 17:15</span>
                 <div class="card-title">企鵝館 🐧</div>
@@ -271,14 +371,12 @@
                 <div class="info-tags"><span class="info-tag">⏱ 15-20分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
                 <div class="attraction-img" style="background-image: url('https://picsum.photos/id/96/400/200');"></div>
             </div>
-
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">18:00 - 19:30</span>
                 <div class="card-title">帝企鵝自助晚餐 🍴</div>
                 <div class="card-desc">🍽️ 邊食邊睇企鵝！<strong>帝企鵝自助餐廳營業時間：晚餐 17:30 - 21:30</strong><br>必搶窗邊位，建議 17:15 前排隊入場。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐1.5小時</span><span class="info-tag zone-tag">企鵝酒店</span></div>
             </div>
-
             <div class="card" data-zone="煙花匯演">
                 <span class="time-badge">20:00 - 20:20</span>
                 <div class="card-title">🎆 海洋保衛戰 · 煙花水幕匯演 🎆</div>
@@ -288,7 +386,7 @@
             </div>
         </div>
 
-        <!-- ================= DAY 2 (修正版：英雄島調至上午，動線順暢) ================= -->
+        <!-- DAY 2 -->
         <div id="day-2-content" class="day-content" style="display:none;">
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">10:00</span>
@@ -297,97 +395,66 @@
                 <div class="info-tags"><span class="info-tag">⏱ 30-40分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
                 <div class="attraction-img" style="background-image: url('https://picsum.photos/id/129/400/200');"></div>
             </div>
-
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">11:30</span>
                 <div class="card-title">白鯨劇場 🐋 <span class="highlight-text">(必去)</span></div>
                 <div class="card-desc">優雅白鯨表演，場次：11:30 / 14:00 / 17:30</div>
                 <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
             </div>
-
-            <!-- 英雄島 + 海底船 (上午時段，動線順暢) -->
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">12:30 - 13:30</span>
                 <div class="card-title">英雄島 🦸 & 海底船 🚤</div>
-                <div class="card-desc">
-                    • <strong>英雄島：</strong>旋轉木馬、碰碰樂等溫和遊樂設施，適合全家同樂。<br>
-                    • <strong>海底船：</strong>乘坐互動船探索深海奇觀，適合長輩小朋友。
-                </div>
+                <div class="card-desc">• <strong>英雄島：</strong>旋轉木馬、碰碰樂等溫和遊樂設施。<br>• <strong>海底船：</strong>乘坐互動船探索深海奇觀。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 建議停留1小時</span><span class="info-tag zone-tag">海洋王國</span></div>
             </div>
-
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">17:30 - 18:45</span>
                 <div class="card-title">晚餐 (睇長隆秀前)</div>
                 <div class="card-desc">建議於酒店「食街」或園區餐廳提早用晚餐。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐1小時15分鐘</span><span class="info-tag zone-tag">酒店區</span></div>
             </div>
-
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">19:30 - 21:00</span>
                 <div class="card-title">長隆秀 🎪</div>
-                <div class="card-desc">國際級雜技表演，長輩與小朋友最愛。<br>
-                <span class="highlight-text">📌 攻略重點：建議 18:50 前抵達馬戲城，提早 40 分鐘入場選位（中間靠前區域視野最佳）。</span></div>
+                <div class="card-desc">國際級雜技表演。<br><span class="highlight-text">📌 攻略重點：建議 18:50 前抵達馬戲城，提早 40 分鐘入場選位。</span></div>
                 <div class="info-tags"><span class="info-tag">⏱ 90分鐘</span><span class="info-tag zone-tag">馬戲城</span></div>
             </div>
         </div>
 
-        <!-- ================= DAY 3 (修正版：移除英雄島，新增星際展廳，飛船樂園順路) ================= -->
+        <!-- DAY 3 -->
         <div id="day-3-content" class="day-content" style="display:none;">
             <div class="card" data-zone="飛船樂園">
                 <span class="time-badge">10:00 入園 · 10:30 場次</span>
-                <div class="card-title">🔥 虎鯨劇場 · 海洋霸主秀 🐋 <span class="highlight-text">(必看！非常震撼！)</span></div>
-                <div class="intro-text">
-                    🔥 <strong>虎鯨劇場：全園最震撼項目！</strong> 全球最大室內虎鯨展演場，可容納近5000人。<br>
-                    📌 <strong>攻略重點：</strong> 開園後「第一個直奔」虎鯨劇場，搶佔中間前五排座位。
-                </div>
+                <div class="card-title">🔥 虎鯨劇場 · 海洋霸主秀 🐋 <span class="highlight-text">(必看！)</span></div>
+                <div class="intro-text">🔥 開園後「第一個直奔」虎鯨劇場，搶佔中間前五排座位。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 表演約30分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
                 <div class="attraction-img" style="background-image: url('https://picsum.photos/id/33/400/200');"></div>
             </div>
-
             <div class="card" data-zone="飛船樂園">
                 <span class="time-badge">11:00 - 11:50</span>
-                <div class="card-title">宇宙世界 & 珊瑚秘境 🪸 <span class="highlight-text">(全球最大室內珊瑚展示)</span></div>
-                <div class="intro-text">
-                    🚀 <strong>宇宙世界：</strong> 穿越星際隧道，感受外太空與海洋的結合。<br>
-                    🪸 <strong>珊瑚秘境：全球最大室內珊瑚展示！</strong> 近距離觀察上百種珊瑚。
-                </div>
+                <div class="card-title">宇宙世界 & 珊瑚秘境 🪸</div>
+                <div class="intro-text">🚀 宇宙世界：星際隧道。🪸 珊瑚秘境：全球最大室內珊瑚展示。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 建議停留50分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
             </div>
-
             <div class="card" data-zone="飛船樂園">
                 <span class="time-badge">12:00 - 13:00</span>
                 <div class="card-title">虎鯨餐廳 🍽️ <span class="highlight-text">(與虎鯨共進午餐)</span></div>
-                <div class="card-desc">
-                    <strong>✨ 萬眾矚目！與虎鯨共進午餐 ✨</strong><br>
-                    • 180度海洋景色，坐在第一排與虎鯨同框用餐<br>
-                    • <span class="highlight-text">攻略重點：建議 11:45 前抵達餐廳佔據第一排位置</span>
-                </div>
+                <div class="card-desc">建議 11:45 前抵達餐廳佔據第一排位置。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐1小時</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
                 <div class="attraction-img" style="background-image: url('https://picsum.photos/id/33/400/200');"></div>
             </div>
-
             <div class="card" data-zone="飛船樂園">
                 <span class="time-badge">13:30 - 14:30</span>
-                <div class="card-title">深海潛艇 & 百慕大歷險 🚀 <span class="highlight-text">(推薦設施)</span></div>
-                <div class="intro-text">
-                    🚤 <strong>深海潛艇：</strong> 中國首個真實水下潛艇設施，平穩安心。<br>
-                    🚢 <strong>百慕大歷險：</strong> 5D動感平台，有體感但不會像過山車般翻滾。
-                </div>
+                <div class="card-title">深海潛艇 & 百慕大歷險 🚀</div>
+                <div class="intro-text">🚤 深海潛艇：平穩安心。🚢 百慕大歷險：5D動感平台，不翻滾。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 各15-20分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
             </div>
-
-            <!-- 星際展廳 (飛船樂園內順路景點，取代英雄島) -->
             <div class="card" data-zone="飛船樂園">
                 <span class="time-badge">14:30 - 15:30</span>
                 <div class="card-title">星際展廳 🌌 & 自由探索</div>
-                <div class="card-desc">
-                    • <strong>星際展廳：</strong>夢幻光影打卡點，輕鬆散步，適合慢慢欣賞。<br>
-                    • 補拍照片、逛紀念品商店。
-                </div>
+                <div class="card-desc">夢幻光影打卡點，補拍照片、逛紀念品商店。</div>
                 <div class="info-tags"><span class="info-tag">⏱ 建議停留1小時</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
             </div>
-
             <div class="card" data-zone="交通">
                 <span class="time-badge">16:00</span>
                 <div class="card-title">回程出發 🚕</div>
@@ -397,27 +464,15 @@
         </div>
     </div>
 
-    <!-- 遊戲推薦分頁 -->
+    <!-- ================= 遊戲清單分頁 ================= -->
     <div id="view-rides" class="view-panel">
-        <div class="card" data-zone="海洋王國">
-            <div class="card-title">5D 城堡影院</div>
-            <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
-        </div>
-        <div class="card" data-zone="飛船樂園">
-            <div class="card-title">深海潛艇</div>
-            <div class="info-tags"><span class="info-tag">⏱ 15分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
-        </div>
-        <div class="card" data-zone="飛船樂園">
-            <div class="card-title">百慕大歷險 🌊 <span class="highlight-text">推薦！</span></div>
-            <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div>
-        </div>
-        <div class="card" data-zone="海洋王國">
-            <div class="card-title">海底互動船</div>
-            <div class="info-tags"><span class="info-tag">⏱ 15分鐘</span><span class="info-tag zone-tag">海洋王國</span></div>
-        </div>
+        <div class="card" data-zone="海洋王國"><div class="card-title">5D 城堡影院</div><div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span></div></div>
+        <div class="card" data-zone="飛船樂園"><div class="card-title">深海潛艇</div><div class="info-tags"><span class="info-tag">⏱ 15分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div></div>
+        <div class="card" data-zone="飛船樂園"><div class="card-title">百慕大歷險 🌊 <span class="highlight-text">推薦！</span></div><div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag spaceship">飛船樂園</span></div></div>
+        <div class="card" data-zone="海洋王國"><div class="card-title">海底互動船</div><div class="info-tags"><span class="info-tag">⏱ 15分鐘</span><span class="info-tag zone-tag">海洋王國</span></div></div>
     </div>
 
-    <!-- 表演時間分頁 -->
+    <!-- ================= 表演時間分頁 ================= -->
     <div id="view-shows" class="view-panel">
         <div class="card">
             <table class="show-table">
@@ -430,6 +485,60 @@
                 <tr><td>🎪 長隆秀</td><td>19:30 (Day 2，建議18:50前抵達)</td></tr>
             </table>
             <div class="card-desc" style="margin-top: 12px;"><span class="highlight-text">📌 貼士：</span>所有表演建議提前15分鐘入場，長隆秀請提前40分鐘入座。</div>
+        </div>
+    </div>
+
+    <!-- ================= 園區地圖分頁 (新增) ================= -->
+    <div id="view-maps" class="view-panel">
+        <div class="map-card">
+            <div class="map-title">🐋 海洋王國 官方地圖</div>
+            <div class="map-placeholder">
+                <i class="fa-regular fa-map" style="font-size: 48px; color: var(--ocean-blue);"></i>
+                <p style="margin: 12px 0;">長隆海洋王國園區導覽圖</p>
+                <a href="https://www.chimelong.com/zh/oceankingdom/exhibition/" class="map-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-regular fa-arrow-up-right-from-maps"></i> 前往官網查看地圖
+                </a>
+            </div>
+            <div class="qr-note">
+                💡 官方展區介紹頁面：<a href="https://www.chimelong.com/zh/oceankingdom/exhibition/" target="_blank" style="color: var(--ocean-blue);">點此開啟</a><br>
+                建議入園時於售票處索取紙本地圖，或掃描園區 QR Code。
+            </div>
+        </div>
+
+        <div class="map-card">
+            <div class="map-title">🚀 宇宙飛船樂園 地圖</div>
+            <div class="map-placeholder">
+                <i class="fa-regular fa-rocket" style="font-size: 48px; color: var(--color-spaceship);"></i>
+                <p style="margin: 12px 0;">長隆宇宙飛船園區導覽</p>
+                <a href="https://www.chimelong.com/zh/spaceship/" class="map-link" target="_blank" rel="noopener noreferrer" style="background: var(--color-spaceship);">
+                    <i class="fa-regular fa-arrow-up-right-from-maps"></i> 前往官網查看地圖
+                </a>
+            </div>
+            <div class="qr-note">
+                💡 飛船樂園全室內，入園時可索取紙本地圖，或使用長隆旅遊 App。
+            </div>
+        </div>
+
+        <div class="map-card">
+            <div class="map-title">🏨 長隆度假區 整體地圖</div>
+            <div class="map-placeholder">
+                <i class="fa-regular fa-location-dot" style="font-size: 48px; color: var(--color-hotel);"></i>
+                <p style="margin: 12px 0;">企鵝酒店、海洋王國、飛船樂園、馬戲城相對位置</p>
+                <a href="https://www.chimelong.com/zh/resort/" class="map-link" target="_blank" rel="noopener noreferrer" style="background: var(--color-hotel);">
+                    <i class="fa-regular fa-arrow-up-right-from-maps"></i> 前往官網查看地圖
+                </a>
+            </div>
+            <div class="qr-note">
+                💡 各園區之間有免費穿梭巴士，班次約 15-20 分鐘一班。
+            </div>
+        </div>
+
+        <div class="emergency-mini" style="margin-top: 8px;">
+            <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 10px;">
+                <i class="fa-regular fa-circle-info" style="color: var(--ocean-blue);"></i>
+                <strong>📱 實用 App 推薦</strong>
+            </div>
+            <div>下載「長隆旅遊」App，可查看即時地圖、排隊時間、表演場次。</div>
         </div>
     </div>
 
@@ -448,6 +557,7 @@
     <div class="footer-safe">
         <i class="fa-regular fa-cloud"></i> Day 1 晚上煙花 | Day 2 晚上長隆秀 (18:50前抵達) | Day 3 飛船樂園 + 虎鯨餐廳<br>
         🌟 必看：虎鯨劇場、珊瑚秘境 | 推薦：百慕大歷險<br>
+        📍 地圖頁提供官方連結，建議出發前先行瀏覽。<br>
         祝旅途愉快 🐧
     </div>
 </div>
@@ -460,7 +570,8 @@
         const panels = {
             itinerary: document.getElementById('view-itinerary'),
             rides: document.getElementById('view-rides'),
-            shows: document.getElementById('view-shows')
+            shows: document.getElementById('view-shows'),
+            maps: document.getElementById('view-maps')
         };
         function switchMainTab(tabId) {
             Object.values(panels).forEach(p => p.classList.remove('active'));
