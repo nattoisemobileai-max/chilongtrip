@@ -182,7 +182,8 @@
         }
         .zone-tag { background: rgba(0,102,255,0.1); color: var(--ocean-blue); }
         .zone-tag.spaceship { background: rgba(155,89,182,0.1); color: #8E44AD; }
-        .area-tag { background: #E8F0FE; color: #1E6F3F; }  /* 園區標籤顏色 */
+        .area-tag { background: #E8F0FE; color: #1E6F3F; }
+        .show-ref-tag { background: #FFF3E0; color: #E65100; }
 
         .highlight-text { color: var(--coral-orange); font-weight: 800; }
         
@@ -203,6 +204,35 @@
             background: #F8FAFC; 
             border-bottom: 2px solid white; 
             font-size: clamp(0.8rem, 3vw, 0.9rem);
+        }
+
+        /* 餐廳表格樣式 */
+        .restaurant-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        .restaurant-table th {
+            background: var(--ocean-blue);
+            color: white;
+            padding: 10px 6px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .restaurant-table td {
+            padding: 10px 6px;
+            background: #F8FAFC;
+            border-bottom: 1px solid #E2E8F0;
+            text-align: center;
+        }
+        .restaurant-table tr:last-child td {
+            border-bottom: none;
+        }
+        .restaurant-note {
+            font-size: 0.7rem;
+            color: #8E8E93;
+            margin-top: 12px;
+            text-align: center;
         }
 
         .emergency-mini {
@@ -297,6 +327,7 @@
     <button class="nav-item active" data-main="itinerary">📅 完整行程</button>
     <button class="nav-item" data-main="rides">🎢 遊戲清單</button>
     <button class="nav-item" data-main="shows">🕒 表演時間</button>
+    <button class="nav-item" data-main="meals">🍽️ 餐廳推介</button>
     <button class="nav-item" data-main="maps">🗺️ 園區地圖</button>
 </nav>
 
@@ -313,7 +344,7 @@
             <button class="day-btn" data-day="3">🚀 DAY 3 · 飛船樂園</button>
         </div>
 
-        <!-- ========= DAY 1 (每個景點加上園區標籤) ========= -->
+        <!-- ========= DAY 1 ========= -->
         <div id="day-1-content" class="day-content">
             <div class="card" data-zone="交通">
                 <span class="time-badge">交通時間表</span>
@@ -324,7 +355,7 @@
                 <div class="timeline-step"><span class="step-name">🛃 珠海口岸入境</span><span class="step-detail">⏱ 10-15分鐘</span></div>
                 <div class="timeline-step"><span class="step-name">🚕 的士前往企鵝酒店</span><span class="step-detail">⏱ 25-40分鐘 | 💰 ¥100-130</span></div>
                 <div class="card-desc"><strong>A33 晨早班次：</strong> 09:15 / 09:35 / 09:55</div>
-                <img class="card-img" src="images/view0.jpg" alt="交通示意圖">
+                <img class="card-img" src="images/view1.jpg" alt="交通示意圖">
             </div>
 
             <div class="card" data-zone="酒店/餐飲">
@@ -332,15 +363,14 @@
                 <div class="card-title">Check-in + 快速午餐</div>
                 <div class="card-desc">11:45 前抵達酒店，寄存行李後於「食街」快速用餐，12:45 出發前往 5D影院。<br><span class="highlight-text">需提前15分鐘排隊入場！</span></div>
                 <div class="info-tags"><span class="info-tag area-tag">📍 企鵝酒店</span></div>
-                <img class="card-img" src="images/view1_hotel.jpg" alt="企鵝酒店">
+                <img class="card-img" src="images/view1.jpg" alt="企鵝酒店">
             </div>
 
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">13:30 - 14:00</span>
                 <div class="card-title">5D城堡影院 🎬</div>
-                <div class="card-desc">動感座椅+風雨特效，建議 13:15 前排隊。</div>
-                <div class="card-desc">想深入了解海洋王國的背景故事？「5D 城堡影院」絕對是您的第一站！這座可容納千人的影院，配備了長 88 米、高 18 米的 180° 弧形 3D 巨幕，結合動感座椅及多重環境特效，為您帶來身臨其境的視聽衝擊。跟隨樂園吉祥物「卡卡」展開一場驚心動魄的冒險旅程，感受飛天遁地的刺激快感！親子必睇推介！</div>
-                <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海洋大街</span></div>
+                <div class="card-desc">動感座椅+風雨特效，建議 13:15 前排隊。<br><span class="highlight-text">表演時間參考：10:30 / 12:00 / 13:30 / 15:00 / 16:30 / 18:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海洋大街</span><span class="info-tag show-ref-tag">🎬 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="5D城堡影院">
             </div>
 
@@ -355,8 +385,8 @@
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">15:00 - 15:20</span>
                 <div class="card-title">海洋大巡遊 🎭</div>
-                <div class="card-desc">繽紛花車互動，橫琴海主幹道。</div>
-                <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span></div>
+                <div class="card-desc">繽紛花車互動，橫琴海主幹道。<br><span class="highlight-text">表演時間參考：15:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span><span class="info-tag show-ref-tag">🎭 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="海洋大巡遊">
             </div>
 
@@ -364,7 +394,8 @@
                 <span class="time-badge">15:30 - 16:00</span>
                 <div class="card-title">海豚劇場 🐬</div>
                 <div class="intro-text">🌊 <strong>海豚劇場</strong> — 坐下來看表演，長者可以休息，小朋友也能近距離看動物！</div>
-                <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海豚灣</span></div>
+                <div class="card-desc"><span class="highlight-text">表演時間參考：13:00、17:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海豚灣</span><span class="info-tag show-ref-tag">🐬 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="海豚劇場">
             </div>
 
@@ -372,16 +403,16 @@
                 <span class="time-badge">16:15 - 16:40</span>
                 <div class="card-title">海獅劇場 🦭</div>
                 <div class="intro-text">🎭 <strong>海獅劇場</strong> — 幽默搞笑的海獅表演，坐下來欣賞，長輩可以趁機休息。</div>
-                <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海象山</span></div>
+                <div class="card-desc"><span class="highlight-text">表演時間參考：13:00、17:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海象山</span><span class="info-tag show-ref-tag">🦭 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="海獅劇場">
             </div>
 
-            <!-- Plan 2.0 核心：17:00 長隆秀 -->
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">17:00 - 18:30</span>
                 <div class="card-title">長隆秀 🎪 <span class="highlight-text">(Plan 2.0 優先安排)</span></div>
-                <div class="card-desc">國際級雜技表演，長輩與小朋友最愛。<br>📌 建議 16:40 前抵達馬戲城，提早入座選位。</div>
-                <div class="info-tags"><span class="info-tag">⏱ 90分鐘</span><span class="info-tag zone-tag">馬戲城</span><span class="info-tag area-tag">📍 長隆馬戲城</span></div>
+                <div class="card-desc">國際級雜技表演，長輩與小朋友最愛。<br>📌 建議 16:40 前抵達馬戲城，提早入座選位。<br><span class="highlight-text">表演時間參考：17:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 90分鐘</span><span class="info-tag zone-tag">馬戲城</span><span class="info-tag area-tag">📍 長隆馬戲城</span><span class="info-tag show-ref-tag">🎪 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="長隆秀">
             </div>
 
@@ -405,7 +436,7 @@
             </div>
         </div>
 
-        <!-- ========= DAY 2 (每個景點加上園區標籤) ========= -->
+        <!-- ========= DAY 2 ========= -->
         <div id="day-2-content" class="day-content" style="display:none;">
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">10:00</span>
@@ -418,18 +449,15 @@
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">11:30</span>
                 <div class="card-title">白鯨劇場 🐋 <span class="highlight-text">(必去)</span></div>
-                <div class="card-desc">優雅白鯨表演，場次：11:30 / 14:00 / 17:30</div>
-                <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 極地探險</span></div>
+                <div class="card-desc">優雅白鯨表演。<br><span class="highlight-text">表演時間參考：13:00、17:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 極地探險</span><span class="info-tag show-ref-tag">🐋 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="白鯨劇場">
             </div>
 
             <div class="card" data-zone="酒店/餐飲">
                 <span class="time-badge">12:30 - 13:30</span>
                 <div class="card-title">午餐：横琴灣畔餐廳 🍜</div>
-                <div class="card-desc">
-                    <strong>珠海長隆海洋王國餐廳美食推薦</strong><br>
-                    • 位於海洋王園區內，主打粵式燒味、海鮮炒飯、港式點心
-                </div>
+                <div class="card-desc"><strong>珠海長隆海洋王國餐廳美食推薦</strong><br>主打粵式燒味、海鮮炒飯、港式點心<br>📍 位於海洋奇觀區，性價比較高</div>
                 <div class="info-tags"><span class="info-tag">⏱ 用餐1小時</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海洋奇觀區</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="横琴灣畔餐廳">
             </div>
@@ -446,7 +474,8 @@
                 <span class="time-badge">15:30 - 16:00</span>
                 <div class="card-title">海豚劇場 🐬</div>
                 <div class="intro-text">🌊 坐下來看表演，長者可以休息，小朋友也能近距離看動物！</div>
-                <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海豚灣</span></div>
+                <div class="card-desc"><span class="highlight-text">表演時間參考：13:00、17:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 30分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海豚灣</span><span class="info-tag show-ref-tag">🐬 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="海豚劇場">
             </div>
 
@@ -454,7 +483,8 @@
                 <span class="time-badge">16:15 - 16:40</span>
                 <div class="card-title">海獅劇場 🦭</div>
                 <div class="intro-text">🎭 幽默搞笑的海獅表演，坐下來欣賞，長輩可以趁機休息。</div>
-                <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海象山</span></div>
+                <div class="card-desc"><span class="highlight-text">表演時間參考：13:00、17:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 25分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 海象山</span><span class="info-tag show-ref-tag">🦭 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="海獅劇場">
             </div>
 
@@ -477,16 +507,16 @@
             <div class="card" data-zone="海洋王國">
                 <span class="time-badge">19:00 - 19:20</span>
                 <div class="card-title">海洋夜光花車巡遊 🎭✨</div>
-                <div class="card-desc">夜間限定！繽紛發光花車與表演者互動，橫琴海主幹道，建議提早佔位。</div>
-                <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span></div>
+                <div class="card-desc">夜間限定！繽紛發光花車與表演者互動，橫琴海主幹道，建議提早佔位。<br><span class="highlight-text">表演時間參考：19:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">海洋王國</span><span class="info-tag area-tag">📍 橫琴海</span><span class="info-tag show-ref-tag">🎭 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="夜光花車巡遊">
             </div>
 
             <div class="card" data-zone="煙花匯演">
                 <span class="time-badge">20:00 - 20:20</span>
                 <div class="card-title">🎆 海洋保衛戰 · 煙花水幕匯演 🎆</div>
-                <div class="card-desc"><strong>結合無人機、噴泉、水上飛人與煙花爆破！</strong><br>最佳觀賞點：橫琴海湖邊，建議 19:45 前佔位。</div>
-                <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">橫琴海</span><span class="info-tag area-tag">📍 橫琴海</span></div>
+                <div class="card-desc"><strong>結合無人機、噴泉、水上飛人與煙花爆破！</strong><br>最佳觀賞點：橫琴海湖邊，建議 19:45 前佔位。<br><span class="highlight-text">表演時間參考：20:00 (以當日公告為準)</span></div>
+                <div class="info-tags"><span class="info-tag">⏱ 20分鐘</span><span class="info-tag zone-tag">橫琴海</span><span class="info-tag area-tag">📍 橫琴海</span><span class="info-tag show-ref-tag">🎆 場次僅供參考</span></div>
                 <img class="card-img" src="images/view1.jpg" alt="煙花匯演">
             </div>
         </div>
@@ -572,15 +602,47 @@
         <div class="card">
             <table class="show-table">
                 <tr style="background:#EFF3FF;"><td>🔥 虎鯨劇場 (飛船樂園) <span class="highlight-text">非常震撼！</span></td><td>10:30 / 12:00 / 16:00</td></tr>
-                <tr><td>🐋 白鯨劇場 (海洋王國) <span class="highlight-text">必去</span></td><td>11:30 / 14:00 / 17:30</td></tr>
-                <tr><td>🐬 海豚劇場 (海洋王國)</td><td>11:30 / 15:30</td></tr>
-                <tr><td>🦭 海獅劇場 (海洋王國)</td><td>10:30 / 14:00 / 16:00</td></tr>
-                <tr><td>🎭 海洋夜光花車巡遊</td><td>19:00 (Day 2)</td></tr>
-                <tr><td>🎆 海洋保衛戰煙花水幕匯演</td><td>20:00 (Day 2)</td></tr>
-                <tr><td>🎪 長隆秀</td><td>17:00 (Day 1 新 Plan)</td></tr>
+                <tr><td>🐋 白鯨劇場 (海洋王國) <span class="highlight-text">必去</span></td><td>13:00 / 17:00 (以當日公告為準)</td></tr>
+                <tr><td>🐬 海豚劇場 (海洋王國)</td><td>13:00 / 17:00 (以當日公告為準)</td></tr>
+                <tr><td>🦭 海獅劇場 (海洋王國)</td><td>13:00 / 17:00 (以當日公告為準)</td></tr>
+                <tr><td>🎭 海洋夜光花車巡遊</td><td>19:00 (Day 2，以當日公告為準)</td></tr>
+                <tr><td>🎆 海洋保衛戰煙花水幕匯演</td><td>20:00 (Day 2，以當日公告為準)</td></tr>
+                <tr><td>🎪 長隆秀</td><td>17:00 (Day 1，以當日公告為準)</td></tr>
             </table>
             <div class="card-desc" style="margin-top: 12px;"><span class="highlight-text">📌 貼士：</span>所有表演建議提前15分鐘入場，長隆秀請提前20分鐘入座。</div>
             <img class="card-img" src="images/view1.jpg" alt="表演時間總覽">
+        </div>
+    </div>
+
+    <!-- ================= 餐廳推介分頁 (新增) ================= -->
+    <div id="view-meals" class="view-panel">
+        <div class="card">
+            <div class="card-title">🍽️ 珠海長隆海洋王國｜餐廳推介</div>
+            <div class="card-desc">玩到攰想醫肚？樂園內有多間餐廳任君選擇，豐儉由人。以下為部分餐廳參考：</div>
+            <table class="restaurant-table">
+                <thead>
+                    <tr>
+                        <th>餐廳名稱</th>
+                        <th>主要菜系</th>
+                        <th>餐飲形式</th>
+                        <th>人均消費 (人民幣)</th>
+                        <th>特色</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>海底餐廳</td><td>中西式套餐/單點</td><td>餐桌服務</td><td>約 ¥310+</td><td>最大賣點：鄰近鯨鯊館巨型展視屏，可邊食邊睇魚！氣氛獨特，打卡一流。需要提早預約。</td></tr>
+                    <tr><td>橫琴灣畔餐廳</td><td>中式風味快餐</td><td>快餐服務</td><td>約 ¥73+</td><td>性價比較高，提供中式飯麵套餐。</td></tr>
+                    <tr><td>雨林餐廳</td><td>東南亞風味快餐</td><td>快餐服務</td><td>約 ¥103+</td><td>鄰近鸚鵡過山車。</td></tr>
+                    <tr><td>海洋大街餐廳</td><td>西式/主題快餐</td><td>快餐服務</td><td>約 ¥95+</td><td>位於入口大街，方便就腳。</td></tr>
+                    <tr><td>城堡餐廳</td><td>日韓風味快餐</td><td>快餐服務</td><td>約 ¥72+</td><td>提供日韓式飯食選擇。</td></tr>
+                    <tr><td>海象餐廳</td><td>粵式風味快餐</td><td>快餐服務</td><td>約 ¥73+</td><td>想食燒味飯？呢度有！排隊人流或較少。</td></tr>
+                    <tr><td>英雄家族餐廳</td><td>西式快餐/親子餐</td><td>快餐服務</td><td>約 ¥86+</td><td>裝修得意，啱晒小朋友。</td></tr>
+                </tbody>
+            </table>
+            <div class="restaurant-note">
+                📌 註：以上資訊僅供參考，餐廳菜單、價格及營業時間以樂園現場實際公佈為準。
+            </div>
+            <img class="card-img" src="images/view1.jpg" alt="餐廳推介">
         </div>
     </div>
 
@@ -641,6 +703,7 @@
             itinerary: document.getElementById('view-itinerary'),
             rides: document.getElementById('view-rides'),
             shows: document.getElementById('view-shows'),
+            meals: document.getElementById('view-meals'),
             maps: document.getElementById('view-maps')
         };
         function switchMainTab(tabId) {
